@@ -1,0 +1,93 @@
+[2024-11-20T10:39:38.773+0700] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-11-20T10:39:38.974+0700] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: scrape_twitter.scrape_twitter_task manual__2024-11-20T03:33:58.672308+00:00 [queued]>
+[2024-11-20T10:39:39.008+0700] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: scrape_twitter.scrape_twitter_task manual__2024-11-20T03:33:58.672308+00:00 [queued]>
+[2024-11-20T10:39:39.009+0700] {taskinstance.py:2866} INFO - Starting attempt 2 of 2
+[2024-11-20T10:39:49.574+0700] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): scrape_twitter_task> on 2024-11-20 03:33:58.672308+00:00
+[2024-11-20T10:39:49.652+0700] {logging_mixin.py:190} WARNING - /home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=124504) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-11-20T10:39:49.659+0700] {standard_task_runner.py:72} INFO - Started process 124968 to run task
+[2024-11-20T10:39:49.672+0700] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'scrape_twitter', 'scrape_twitter_task', 'manual__2024-11-20T03:33:58.672308+00:00', '--job-id', '25', '--raw', '--subdir', 'DAGS_FOLDER/scrape_twitter_dag.py', '--cfg-path', '/tmp/tmpw5c_n2fc']
+[2024-11-20T10:39:49.676+0700] {standard_task_runner.py:105} INFO - Job 25: Subtask scrape_twitter_task
+[2024-11-20T10:39:51.312+0700] {task_command.py:467} INFO - Running <TaskInstance: scrape_twitter.scrape_twitter_task manual__2024-11-20T03:33:58.672308+00:00 [running]> on host fabian4819-VirtualBox
+[2024-11-20T10:39:52.193+0700] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='scrape_twitter' AIRFLOW_CTX_TASK_ID='scrape_twitter_task' AIRFLOW_CTX_EXECUTION_DATE='2024-11-20T03:33:58.672308+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-11-20T03:33:58.672308+00:00'
+[2024-11-20T10:39:52.198+0700] {logging_mixin.py:190} INFO - Task instance is in running state
+[2024-11-20T10:39:52.199+0700] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2024-11-20T10:39:52.199+0700] {logging_mixin.py:190} INFO - Current task name:scrape_twitter_task state:running start_date:2024-11-20 03:39:38.975802+00:00
+[2024-11-20T10:39:52.200+0700] {logging_mixin.py:190} INFO - Dag name:scrape_twitter and current dag run status:running
+[2024-11-20T10:39:52.200+0700] {taskinstance.py:731} INFO - ::endgroup::
+[2024-11-20T10:39:54.767+0700] {job.py:229} INFO - Heartbeat recovered after 28.72 seconds
+[2024-11-20T10:39:58.652+0700] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2024-11-20T10:39:58.797+0700] {process_utils.py:132} INFO - Sending 15 to group 124968. PIDs of all processes in the group: [125040, 124968]
+[2024-11-20T10:39:58.798+0700] {process_utils.py:87} INFO - Sending the signal 15 to group 124968
+[2024-11-20T10:39:58.799+0700] {taskinstance.py:3093} ERROR - Received SIGTERM. Terminating subprocesses.
+[2024-11-20T10:39:58.801+0700] {process_utils.py:80} INFO - Process psutil.Process(pid=125040, status='terminated', started='10:39:52') (125040) terminated with exit code None
+[2024-11-20T10:39:58.855+0700] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 417, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow/dags/scrape_twitter_dag.py", line 40, in run_scrape_twitter
+    scrape_twitter(search_term)  # Panggil fungsi dari scrapping-twitter.py
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/notebooks/scrapping-twitter.py", line 20, in scrape_twitter
+    driver = webdriver.Chrome()
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/selenium/webdriver/chrome/webdriver.py", line 45, in __init__
+    super().__init__(
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/selenium/webdriver/chromium/webdriver.py", line 50, in __init__
+    if finder.get_browser_path():
+       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/selenium/webdriver/common/driver_finder.py", line 47, in get_browser_path
+    return self._binary_paths()["browser_path"]
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/selenium/webdriver/common/driver_finder.py", line 67, in _binary_paths
+    output = SeleniumManager().binary_paths(self._to_args())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/selenium/webdriver/common/selenium_manager.py", line 55, in binary_paths
+    return self._run(args)
+           ^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/selenium/webdriver/common/selenium_manager.py", line 119, in _run
+    completed_proc = subprocess.run(args, capture_output=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 2115, in _communicate
+    ready = selector.select(timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3095, in signal_handler
+    raise AirflowTaskTerminated("Task received SIGTERM signal")
+airflow.exceptions.AirflowTaskTerminated: Task received SIGTERM signal
+[2024-11-20T10:39:59.410+0700] {logging_mixin.py:190} INFO - Task instance in failure state
+[2024-11-20T10:39:59.412+0700] {logging_mixin.py:190} INFO - Task start:2024-11-20 03:39:38.975802+00:00 end:2024-11-20 03:39:59.407817+00:00 duration:20.432015
+[2024-11-20T10:39:59.414+0700] {logging_mixin.py:190} INFO - Task:<Task(PythonOperator): scrape_twitter_task> dag:<DAG: scrape_twitter> dagrun:<DagRun scrape_twitter @ 2024-11-20 03:33:58.672308+00:00: manual__2024-11-20T03:33:58.672308+00:00, state:running, queued_at: 2024-11-20 03:33:58.740187+00:00. externally triggered: True>
+[2024-11-20T10:39:59.419+0700] {logging_mixin.py:190} INFO - Failure caused by Task received SIGTERM signal
+[2024-11-20T10:39:59.421+0700] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=scrape_twitter, task_id=scrape_twitter_task, run_id=manual__2024-11-20T03:33:58.672308+00:00, execution_date=20241120T033358, start_date=20241120T033938, end_date=20241120T033959
+[2024-11-20T10:39:59.614+0700] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-11-20T10:39:59.679+0700] {process_utils.py:80} INFO - Process psutil.Process(pid=124968, status='terminated', exitcode=2, started='10:39:49') (124968) terminated with exit code 2
+[2024-11-20T10:40:05.495+0700] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-11-20T10:40:05.555+0700] {taskinstance.py:2603} INFO - Dependencies not met for <TaskInstance: scrape_twitter.scrape_twitter_task manual__2024-11-20T03:33:58.672308+00:00 [failed]>, dependency 'Task Instance State' FAILED: Task is in the 'failed' state.
+[2024-11-20T10:40:05.563+0700] {local_task_job_runner.py:166} INFO - Task is not able to be run

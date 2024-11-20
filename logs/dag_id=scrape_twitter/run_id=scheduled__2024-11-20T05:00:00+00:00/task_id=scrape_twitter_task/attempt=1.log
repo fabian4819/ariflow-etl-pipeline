@@ -1,0 +1,230 @@
+[2024-11-20T13:01:02.440+0700] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-11-20T13:01:02.599+0700] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: scrape_twitter.scrape_twitter_task scheduled__2024-11-20T05:00:00+00:00 [queued]>
+[2024-11-20T13:01:02.636+0700] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: scrape_twitter.scrape_twitter_task scheduled__2024-11-20T05:00:00+00:00 [queued]>
+[2024-11-20T13:01:02.637+0700] {taskinstance.py:2866} INFO - Starting attempt 1 of 2
+[2024-11-20T13:01:02.704+0700] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): scrape_twitter_task> on 2024-11-20 05:00:00+00:00
+[2024-11-20T13:01:02.739+0700] {logging_mixin.py:190} WARNING - /home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=21090) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-11-20T13:01:02.737+0700] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'scrape_twitter', 'scrape_twitter_task', 'scheduled__2024-11-20T05:00:00+00:00', '--job-id', '39', '--raw', '--subdir', 'DAGS_FOLDER/scrape_twitter_dag.py', '--cfg-path', '/tmp/tmp1tm5ecvb']
+[2024-11-20T13:01:02.741+0700] {standard_task_runner.py:105} INFO - Job 39: Subtask scrape_twitter_task
+[2024-11-20T13:01:02.741+0700] {standard_task_runner.py:72} INFO - Started process 21440 to run task
+[2024-11-20T13:01:03.253+0700] {task_command.py:467} INFO - Running <TaskInstance: scrape_twitter.scrape_twitter_task scheduled__2024-11-20T05:00:00+00:00 [running]> on host fabian4819-VirtualBox
+[2024-11-20T13:01:04.034+0700] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='scrape_twitter' AIRFLOW_CTX_TASK_ID='scrape_twitter_task' AIRFLOW_CTX_EXECUTION_DATE='2024-11-20T05:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-11-20T05:00:00+00:00'
+[2024-11-20T13:01:04.047+0700] {logging_mixin.py:190} INFO - Task instance is in running state
+[2024-11-20T13:01:04.048+0700] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2024-11-20T13:01:04.051+0700] {logging_mixin.py:190} INFO - Current task name:scrape_twitter_task state:running start_date:2024-11-20 06:01:02.600832+00:00
+[2024-11-20T13:01:04.052+0700] {logging_mixin.py:190} INFO - Dag name:scrape_twitter and current dag run status:running
+[2024-11-20T13:01:04.053+0700] {taskinstance.py:731} INFO - ::endgroup::
+[2024-11-20T13:02:46.645+0700] {job.py:229} INFO - Heartbeat recovered after 10.92 seconds
+[2024-11-20T13:04:48.672+0700] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/connectionpool.py", line 536, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/connection.py", line 507, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/http/client.py", line 1428, in getresponse
+    response.begin()
+  File "/usr/lib/python3.12/http/client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/http/client.py", line 292, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 707, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 417, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow/dags/scrape_twitter_dag.py", line 44, in run_scrape_twitter
+    scrape_twitter(search_term)  # Panggil fungsi dari scrapping-twitter.py
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/notebooks/scrapping-twitter.py", line 22, in scrape_twitter
+    driver.get(url)
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py", line 389, in get
+    self.execute(Command.GET, {"url": url})
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py", line 378, in execute
+    response = self.command_executor.execute(driver_command, params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/selenium/webdriver/remote/remote_connection.py", line 391, in execute
+    return self._request(command_info[0], url, body=data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/selenium/webdriver/remote/remote_connection.py", line 415, in _request
+    response = self._conn.request(method, url, body=body, headers=headers, timeout=self._client_config.timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/_request_methods.py", line 143, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/_request_methods.py", line 278, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/poolmanager.py", line 443, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/util/retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/connectionpool.py", line 538, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/connectionpool.py", line 369, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=37239): Read timed out. (read timeout=120)
+[2024-11-20T13:04:49.052+0700] {logging_mixin.py:190} INFO - Task instance in failure state
+[2024-11-20T13:04:49.053+0700] {logging_mixin.py:190} INFO - Task start:2024-11-20 06:01:02.600832+00:00 end:2024-11-20 06:04:49.048655+00:00 duration:226.447823
+[2024-11-20T13:04:49.058+0700] {logging_mixin.py:190} INFO - Task:<Task(PythonOperator): scrape_twitter_task> dag:<DAG: scrape_twitter> dagrun:<DagRun scrape_twitter @ 2024-11-20 05:00:00+00:00: scheduled__2024-11-20T05:00:00+00:00, state:running, queued_at: 2024-11-20 06:00:00.729643+00:00. externally triggered: False>
+[2024-11-20T13:04:49.060+0700] {logging_mixin.py:190} INFO - Failure caused by HTTPConnectionPool(host='localhost', port=37239): Read timed out. (read timeout=120)
+[2024-11-20T13:04:49.062+0700] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=scrape_twitter, task_id=scrape_twitter_task, run_id=scheduled__2024-11-20T05:00:00+00:00, execution_date=20241120T050000, start_date=20241120T060102, end_date=20241120T060449
+[2024-11-20T13:04:49.402+0700] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-11-20T13:04:49.448+0700] {standard_task_runner.py:124} ERROR - Failed to execute job 39 for task scrape_twitter_task (HTTPConnectionPool(host='localhost', port=37239): Read timed out. (read timeout=120); 21440)
+Traceback (most recent call last):
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/connectionpool.py", line 536, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/connection.py", line 507, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/http/client.py", line 1428, in getresponse
+    response.begin()
+  File "/usr/lib/python3.12/http/client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/http/client.py", line 292, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 707, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 417, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow/dags/scrape_twitter_dag.py", line 44, in run_scrape_twitter
+    scrape_twitter(search_term)  # Panggil fungsi dari scrapping-twitter.py
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/notebooks/scrapping-twitter.py", line 22, in scrape_twitter
+    driver.get(url)
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py", line 389, in get
+    self.execute(Command.GET, {"url": url})
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py", line 378, in execute
+    response = self.command_executor.execute(driver_command, params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/selenium/webdriver/remote/remote_connection.py", line 391, in execute
+    return self._request(command_info[0], url, body=data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/selenium/webdriver/remote/remote_connection.py", line 415, in _request
+    response = self._conn.request(method, url, body=body, headers=headers, timeout=self._client_config.timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/_request_methods.py", line 143, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/_request_methods.py", line 278, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/poolmanager.py", line 443, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/util/retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/connectionpool.py", line 538, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "/home/fabian4819/REKAYASA DATA/final-exam-etl-pipeline-project/airflow-env/lib/python3.12/site-packages/urllib3/connectionpool.py", line 369, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=37239): Read timed out. (read timeout=120)
+[2024-11-20T13:04:49.751+0700] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2024-11-20T13:04:50.130+0700] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-11-20T13:04:50.156+0700] {local_task_job_runner.py:245} INFO - ::endgroup::
